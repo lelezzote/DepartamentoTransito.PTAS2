@@ -1,0 +1,5 @@
+Inicie o projeto NodeJS:
+npm init -y
+
+Instalar modulo:
+npm i nome_modulo
