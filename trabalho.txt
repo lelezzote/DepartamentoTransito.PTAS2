@@ -3,3 +3,6 @@ npm init -y
 
 Instalar modulo:
 npm i nome_modulo
+
+Iniciar servidor:
+npm start
