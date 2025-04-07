@@ -6,3 +6,16 @@ npm i nome_modulo
 
 Iniciar servidor:
 npm start
+
+Iniciar o prisma:
+npm i prisma 
+npx prisma init
+
+Migrar a config. para o bd e arquivo de modulos:
+npx prisma migrate dev
+-nome para migração: createVeiculoModel
+
+migration: atualização nos módulos para enviar ao banco de dados
+
+visualisar bd:
+npx prisma studio
