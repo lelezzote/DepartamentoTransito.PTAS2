@@ -5,7 +5,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Hello Word!");
+    res.send("Departamento de Trânsito");
 }); 
 
 const veiculoRoutes = require("./routes/veiculoRoutes")
