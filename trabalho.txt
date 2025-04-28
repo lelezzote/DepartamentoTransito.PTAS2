@@ -19,3 +19,15 @@ migration: atualização nos módulos para enviar ao banco de dados
 
 visualisar bd:
 npx prisma studio
+
+prisma client 
+
+
+npm i
+npx prisma generate
+npm start
+
+
+PROVA:
+.body pega dados que vieram via post
+.query pega dados que vieram via get
