@@ -31,3 +31,6 @@ npm start
 PROVA:
 .body pega dados que vieram via post
 .query pega dados que vieram via get
+
+
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted

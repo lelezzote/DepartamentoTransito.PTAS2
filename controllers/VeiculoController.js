@@ -5,10 +5,6 @@ const prisma = new PrismaClient();
 
 
 class VeiculoController {
-    static formCadastro(req, res) {
-        res.sendFile(path.join(__dirname, "..", "views", "formVeiculo.html"))
-    }
-
     static async cadastrar(req,res) {
       const veiculo = await prisma.veiculo.create({
        
@@ -19,7 +15,9 @@ class VeiculoController {
           cor: req.body.cor,
         }
       });
-       res.send(`O veículo foi cadastrado sob o ID ${veiculo.id}`)
+       res.json({
+         veiculoId: veiculo.id,
+       });
     }
 
 
