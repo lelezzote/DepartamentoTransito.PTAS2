@@ -11,6 +11,9 @@ app.get("/", (req, res) => {
 const veiculoRoutes = require("./routes/veiculoRoutes")
 app.use("/veiculos", veiculoRoutes);
 
+const usuarioRoutes = require("./routes/usuarioRoutes")
+app.use("/usuarios", usuarioRoutes);
+
 app.listen(8000, (err) => {
     if (err) {
         console.log("Erro:" + JSON.stringify(err));

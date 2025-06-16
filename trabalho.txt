@@ -34,3 +34,9 @@ PROVA:
 
 
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+
+migrar as alteraçoes o schema prima para o bd:
+npx prsima migrate dev
+create_usuario_model
+
+npm i bcryptjs

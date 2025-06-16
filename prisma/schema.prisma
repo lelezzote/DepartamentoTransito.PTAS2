@@ -14,3 +14,12 @@ model Veiculo{
     cor String
     ano Int
 }
+
+model Usuario{
+    id Int @id @default(autoIncrement())
+    nome String
+    email String @unique
+    senha String
+}
+
+# npx prisma migrate dev
