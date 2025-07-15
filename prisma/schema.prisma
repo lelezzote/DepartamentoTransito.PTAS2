@@ -1,25 +1,23 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "sqlite"
-    url = env ("DATABASE_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
-model Veiculo{
-    id Int @id @default(autoincrement())
-    placa String
-    modelo String
-    cor String
-    ano Int
+model Veiculo {
+  id     Int    @id @default(autoincrement())
+  placa  String
+  modelo String
+  cor    String
+  ano    Int
 }
 
-model Usuario{
-    id Int @id @default(autoIncrement())
-    nome String
-    email String @unique
-    senha String
+model Usuario {
+  id     Int    @id @default(autoincrement())
+  nome   String
+  email  String @unique
+  senha  String
 }
-
-# npx prisma migrate dev

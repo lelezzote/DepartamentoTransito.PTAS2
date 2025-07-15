@@ -21,7 +21,18 @@ class VeiculoController {
     }
 
 
-    static buscarTodos(req,res) {}
+    static async buscarTodos(req,res) {
+       const where = {};
+       if(req.params.id = null){
+        where.id = parseInt(req.params.id);
+       }
+       const veiculos = await prisma.veiculo.findMay({
+        where: where,
+       });
+       res.json({
+        veiculos,
+       });
+    }
 }
 
 module.exports = VeiculoController;
