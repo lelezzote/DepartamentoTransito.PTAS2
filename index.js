@@ -21,7 +21,16 @@ app.use("/usuarios", usuarioRoutes);
 app.get("/areaLogada", UsuarioController.verificarAutenticacao, (req, res) => {
     res.json({
         msg:
-            "Você está permitido a acessar essa area logada"
+        "Você está logado com o o ID" +
+        req.usuarioId +
+        "e está permitido a acessar essa área"
+    });
+});
+
+app.get("/areaAdmin", UsuarioController.verificarAutenticacao, UsuarioController.verificaAdmin, (req, res) => {
+    res.json({
+        msg:
+        "Você é um administrador"
     });
 });
 

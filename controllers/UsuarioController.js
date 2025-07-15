@@ -68,7 +68,7 @@ class UsuarioController {
 
 
       if (auth) {
-        const token = auth.split( " " )[1];
+        const token = auth.split(" ")[1];
 
         jwt.verify(token, process.env.SENHA_TOKEN, (err, payload) => {
           if (err) {
@@ -82,6 +82,14 @@ class UsuarioController {
       } else {
         res.json({
           msg: "Token não encontrado",
+        });
+      }
+    }
+
+    static async verificaAdmin (req, res, next) {
+      if( !req.usuarioId ){
+        res.json({
+          msg: "Você não está autenticado!",
         });
       }
     }
