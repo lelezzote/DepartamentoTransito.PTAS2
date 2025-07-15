@@ -1,5 +1,7 @@
 const express = require ("express");
 const app = express();
+require('dotenv').config();
+
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -13,10 +15,10 @@ const veiculoRoutes = require("./routes/veiculoRoutes")
 app.use("/veiculos", veiculoRoutes);
 
 const usuarioRoutes = require("./routes/usuarioRoutes");
-const UsuarioController = require('./controller/UsuarioController');
+const UsuarioController = require('./controllers/UsuarioController');
 app.use("/usuarios", usuarioRoutes);
 
-app.get("/areaLogada", UsuarioController.verificarAuteticacao, (req, res) => {
+app.get("/areaLogada", UsuarioController.verificarAutenticacao, (req, res) => {
     res.json({
         msg:"Você está logado com ID: "
         + req.usuarioID

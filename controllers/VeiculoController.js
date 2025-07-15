@@ -11,8 +11,8 @@ class VeiculoController {
         data: {
           placa: req.body.placa,
           modelo: req.body.modelo,
-          ano: parseInt(req.body.ano),
           cor: req.body.cor,
+          ano: parseInt(req.body.ano),
         }
       });
        res.json({
@@ -26,7 +26,7 @@ class VeiculoController {
        if(req.params.id = null){
         where.id = parseInt(req.params.id);
        }
-       const veiculos = await prisma.veiculo.findMay({
+       const veiculos = await prisma.veiculo.findMany({
         where: where,
        });
        res.json({
