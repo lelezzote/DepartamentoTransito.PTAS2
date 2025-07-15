@@ -33,19 +33,20 @@ class UsuarioController {
         if ( !email || !senha ) {
           return res.status(400).json({ msg: "Email e senha são obrigatórios!"});
         }
-
+           //verifica se o usuário existe
         const usuario = await prisma.usuario.findUnique({
           where: { email },
         });
 
         if ( !usuario ){
-          return res.status(400).json({ msg: "Usuário não existe! "});
+          return res.json({ msg: "Usuário não existe! "});
         }
+        //verifica se a senha esta correta 
         const correto = await bcryptjs.compare(senha, usuario.senha);
         if ( !correto ) {
-          return res.status(400).json({ msg: "Senha incorreta!"});
+          return res.json({ msg: "Senha incorreta!"});
         }
-        
+        //emite um token
         const token = jwt.sign({ id: usuario.id }, process.env.SENHA_TOKEN, {
           expiresIn: "1h",
         });
@@ -61,17 +62,18 @@ class UsuarioController {
         .json({ msg: "Erro interno no servidor", error: error.message });
       }
     }
-
+//middleware
     static async verificarAutenticacao (req, res, next ) {
-      const autheader = req.headers ["authorization"];
+      const auth = req.headers ["authorization"];
 
-      if (autheader) {
-        const token = autheader.split( " " )[1];
+
+      if (auth) {
+        const token = auth.split( " " )[1];
 
         jwt.verify(token, process.env.SENHA_TOKEN, (err, payload) => {
           if (err) {
             return res.json({
-              msg: "Token inválido",
+              msg: "Seu login expirou!",
             });
           }
           req.usuarioId = payload.id;
