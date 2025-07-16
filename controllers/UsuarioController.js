@@ -92,6 +92,19 @@ class UsuarioController {
           msg: "Você não está autenticado!",
         });
       }
+
+      const usuario = await prisma.usuario.findUnique({
+        where: {
+          id: req.usuarioId,
+        },
+      });
+
+      if(!usuario.isAdmin){
+        return res.json({
+          msg: "Acesso negado! Você não é um administrador."
+        });
+      }
+      next();
     }
 }
 
